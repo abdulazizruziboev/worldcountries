@@ -1,17 +1,20 @@
-// function skeletonUI(bool) {
-//     if(bool==true) {
-//         document.querySelector(".js-skeleton-box").append(document.querySelector(".js-skeleton-template").cloneNode(true).content)
-//     } else {
-//         document.querySelector(".js-skeleton-box").innerHTML="";
-//     }
-// } skeletonUI(true);
+function skeletonUI(bool) {
+    if(bool==true) {
+        document.querySelector(".js-skeleton-box").append(document.querySelector(".js-skeleton-template").cloneNode(true).content)
+    } else {
+        document.querySelector(".js-skeleton-box").innerHTML="";
+    }
+} skeletonUI(true);
 
 function mainRequest() {
     let name=encodeURIComponent(new URLSearchParams(location.search).get("name"))
     fetch(`https://restcountries.com/v3.1/name/${name}`)
     .then(res=>res.json())
     .then(res=>{
-        uiWrite(res[0]);
+        skeletonUI(false);
+        setTimeout(() => {       
+            uiWrite(res[0]); 
+        }, 1500);
     })
 }
 mainRequest();
