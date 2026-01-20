@@ -11,10 +11,10 @@ function mainRequest() {
     fetch(`https://restcountries.com/v3.1/name/${name}`)
     .then(res=>res.json())
     .then(res=>{
-        skeletonUI(false);
-        setTimeout(() => {       
+        setTimeout(() => {
+            skeletonUI(false);
             uiWrite(res[0]); 
-        }, 1500);
+        }, 5000);
     })
 }
 mainRequest();
