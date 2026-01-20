@@ -48,9 +48,10 @@
         </div>
 
         <template class="js-skeleton-template">
-            <div class="flex flex-col">
-            <div class="skeleton w-full min-w-[300px] h-[239px]"></div>
-            <div class="w-full py-4 flex-col flex gap-2">
+            <div class="flex flex-col lg:flex-row gap-8">
+            <div class="skeleton w-full min-w-[300px] h-[239px] lg:w-full !lg:max-w-[400px] !lg:h-full lg:h-[450px]"></div>
+            <div class="flex flex-col max-w-[900px] w-full">
+                <div class="w-full py-4 flex-col flex gap-2">
                 <div class="skeleton  max-w-[180px] h-[30px]"></div>
                 <div class="w-full flex gap-2 flex-col">
                     <div class="skeleton w-full h-[30px]"></div>
@@ -72,6 +73,7 @@
                     <div class="skeleton w-full h-[30px]"></div>
                 </div>    
            </div>
+            </div>
         </template>
         
         <template class="js-country-card-template">
