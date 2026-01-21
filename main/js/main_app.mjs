@@ -41,21 +41,17 @@ mainRequest();
 
 function cardWrite(data) {
     el_cards_box.innerHTML="";
-    setTimeout(()=>{
     skeletonUI(false,0);
-    },3000)
-    setTimeout(()=>{
     data.forEach(el=>{
         let clone=el_card_template.cloneNode(true).content;
         clone.querySelector(".js-img-flag").src=el.flags.svg;
-        clone.querySelector(".js-card-title").textContent=el.name.official;
-        clone.querySelector(".js-text-population").textContent=el.population;
-        clone.querySelector(".js-text-region").textContent=el.region;
-        clone.querySelector(".js-text-capital").textContent=el.capital[0];
+        clone.querySelector(".js-card-title").textContent=el.name.official?el.name.official:"No data";
+        clone.querySelector(".js-text-population").textContent=el.population?el.population:"No data";
+        clone.querySelector(".js-text-region").textContent=el.region?el.region:"No data";
+        clone.querySelector(".js-text-capital").textContent=el.capital[0]?el.capital[0]:"No data";
         clone.querySelector(".js-card-link").href=`${location.origin}/details/index.html?name=${encodeURIComponent(el.name.official)}`
         el_cards_box.append(clone)
     });
-    },3300)
 }
 
 el_filter_select.addEventListener("change",
@@ -66,9 +62,7 @@ el_filter_select.addEventListener("change",
 
 function findRequest(content) {
     if(content.trim()=="") {
-        setTimeout(()=>{
             mainRequest();
-        },3000)
     } else {  
     fetch(`https://restcountries.com/v3.1/name/${content.trim()}?fields=flags,name,population,region,capital`)
     .then(res=>res.json())

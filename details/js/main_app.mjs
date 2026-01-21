@@ -23,13 +23,12 @@ function uiWrite(data) {
     document.querySelector(".js-card-box").innerHTML=null;
     let clone = document.querySelector(".js-country-card-template").cloneNode(true).content;
     clone.querySelector(".js-country-flag").src=data.flags.svg;
-    clone.querySelector(".js-country-title").textContent=data.name.official;
-    clone.querySelector(".js-country-native-name").textContent=data.name.nativeName[`${Object.keys(data.languages)[0]}`].official;
-    clone.querySelector(".js-country-population").textContent=data.population;
-    clone.querySelector(".js-country-region").textContent=data.region;
-    clone.querySelector(".js-country-sub-region").textContent=data.subregion;
-    clone.querySelector(".js-country-sub-region").textContent=data.subregion;
-    clone.querySelector(".js-country-capital").textContent=data.capital.join(", ");
+    clone.querySelector(".js-country-title").textContent=data.name.official?data.name.official:"No data";
+    clone.querySelector(".js-country-native-name").textContent=data.name.nativeName[`${Object.keys(data.languages)[0]}`].official?data.name.nativeName[`${Object.keys(data.languages)[0]}`].official:"No data";
+    clone.querySelector(".js-country-population").textContent=data.population?data.population:"No data";
+    clone.querySelector(".js-country-region").textContent=data.region?data.region:"No data";
+    clone.querySelector(".js-country-sub-region").textContent=data.subregion?data.subregion:"No data";
+    clone.querySelector(".js-country-capital").textContent=data.capital.join(", ")?data.capital.join(", "):"No data";
     let keys=Object.keys(data);
     keys.some(el=>{
         if(el=="borders") x(true)
@@ -42,9 +41,9 @@ function uiWrite(data) {
     linkClone.querySelector("a").textContent=el; linkClone.querySelector("a").href=`${location.origin}/details/index.html?name=${el}`;
     clone.querySelector(".js-country-border-countries").append(linkClone);
     });} else if(bool==false) {clone.querySelector(".test").innerText=""}}
-    clone.querySelector(".js-country-domain").textContent=data.tld.join(", ");
-    clone.querySelector(".js-country-currencies").textContent=data.currencies[`${Object.keys(data.currencies)}`].name;
-    clone.querySelector(".js-country-languages").textContent=Object.values(data.languages).join(", ");
+    clone.querySelector(".js-country-domain").textContent=data.tld.join(", ")?data.tld.join(", "):"No data";
+    clone.querySelector(".js-country-currencies").textContent=data.currencies[`${Object.keys(data.currencies)}`].name?data.currencies[`${Object.keys(data.currencies)}`].name:"No data";
+    clone.querySelector(".js-country-languages").textContent=Object.values(data.languages).join(", ")?Object.values(data.languages).join(", "):"No data";
     document.querySelector(".js-card-box").append(clone)
 }
 
