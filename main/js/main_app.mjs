@@ -81,7 +81,7 @@ function findRequest(content) {
     } 
 };
 
-el_search_input.addEventListener("input",(evt)=>{
+el_search_input.addEventListener("change",(evt)=>{
     skeletonUI(true,20)
     findRequest(evt.target.value.trim());
 })
